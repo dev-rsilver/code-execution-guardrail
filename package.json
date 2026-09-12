@@ -1,0 +1,21 @@
+{
+    "name": "container-execution-guardrail",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "guard": "node ./containerCheck.js",
+        "preinstall": "npm run guard -- --source=precheck", 
+        "predev": "npm run guard -- --source=precheck",
+        "dev": "NODE_OPTIONS='--import ./containerCheck.js' node dist/index.js",
+        "transpile": "tsc",
+        "setup:lock": "node shell/shell-setup.js lock node npm npx pnpm yarn",
+        "setup:unlock": "node shell/shell-setup.js unlock",
+        "setup:uninstall": "node shell/shell-setup.js uninstall",
+        "test": "node --test"
+    },
+    "devDependencies": {
+        "typescript": "7.0.2",
+        "tsx": "4.23.11",
+        "@types/node": "26.2.0"
+    }
+}
